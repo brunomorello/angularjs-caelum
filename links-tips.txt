@@ -1,0 +1,1 @@
+json-server mock to test consuming API: https://code.tutsplus.com/pt/tutorials/fake-rest-api-up-and-running-using-json-server--cms-27871
