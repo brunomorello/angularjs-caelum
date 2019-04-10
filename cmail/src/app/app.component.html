@@ -50,7 +50,7 @@
 
               <!-- [Conteúdo] -->
               <div class="cmailInputForm">
-                <div class="mdl-textfield mdl-textfield--floating-label" [ngClass]="{ 'is-invalid': emailContent.invalid && emailContent.touched }">
+                <div class="mdl-textfield mdl-textfield--floating-label">
                   <textarea #emailContent="ngModel" [(ngModel)]="email.content" name="conteudo" id="conteudo" placeholder=" " class="mdl-textfield__input"></textarea>
                   <span class="mdl-textfield__error">A content is required!</span>
                   <label class="mdl-textfield__label" for="conteudo">Content: </label>
@@ -61,12 +61,12 @@
               <!-- ./Form Fields -->
             </div>
             <div class="mdl-card__actions mdl-card--border">
-              <button class="mdl-button">
+              <button class="mdl-button" [disabled]="newMailForm.invalid">
                 Send
               </button>
             </div>
             <div class="newEmail__topMenu mdl-card__menu">
-              <button type="button" class="mdl-button mdl-button--icon" (click)="toggleNewEmailFormOpen()" [disabled]="newMailForm.invalid">
+              <button type="button" class="mdl-button mdl-button--icon" (click)="toggleNewEmailFormOpen()">
                 <span class="material-icons">close</span>
               </button>
             </div>
