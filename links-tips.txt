@@ -1,4 +1,11 @@
 json-server mock to test consuming API: https://code.tutsplus.com/pt/tutorials/fake-rest-api-up-and-running-using-json-server--cms-27871
+
 DTO - Data Transfer Object
+
 http://akveo.com/blur-admin/#/dashboard - ADMIN TEMPLATE
+
 Angular Language Service - plugin for vscode
+
+virtual dom = 
+    https://reactjs.org/docs/faq-internals.html
+    https://www.google.com/search?q=virtual+dom&oq=virtual+dom&aqs=chrome..69i57j0l5.2383j0j7&sourceid=chrome&ie=UTF-8
