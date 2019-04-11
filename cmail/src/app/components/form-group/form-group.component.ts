@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormGroupComponent implements OnInit {
 
-  @Input() idField: '';
-  @Input() labelField: '';
+  @Input() idField = '';
+  @Input() labelField = '';
 
   constructor() { }
 
