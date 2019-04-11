@@ -3,7 +3,7 @@
   <main class="mdl-layout__content">
     <div class="page-content">
       <div class="mdl-grid">
-        <form>
+        <form [formGroup]="registerForm">
 
           <cmail-form-group idField="user-full-name" labelField="Full Name">
             <input required type="text" name="user-full-name" cmailFormField>
