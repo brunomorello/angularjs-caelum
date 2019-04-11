@@ -15,9 +15,8 @@ export class CmailFormFieldDirective {
 
     formField.placeholder = " ";
     formField.classList.add("mdl-textfield__input");
+    formField.id = formField.name;
 
   }
-
-  //  id="user-full-name" placeholder=" " class="mdl-textfield__input"
 
 }
