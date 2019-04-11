@@ -15,7 +15,12 @@ export class CmailFormFieldDirective {
 
     formField.placeholder = " ";
     formField.classList.add("mdl-textfield__input");
-    formField.id = formField.name;
+    
+    if(formField.name) {
+      formField.id = formField.name;
+    } else {
+      throw new Error('Define a name attribute!');
+    }
 
   }
 
