@@ -9,6 +9,7 @@ import { RegisterComponent } from './models/register/register.component';
 import { InboxComponent } from './models/inbox/inbox.component';
 import { RoutingModule } from "./app.routes";
 import { FormGroupComponent } from './components/form-group/form-group.component';
+import { CmailFormFieldDirective } from './components/form-group/cmail-form-field.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormGroupComponent } from './components/form-group/form-group.component
     LoginComponent,
     RegisterComponent,
     InboxComponent,
-    FormGroupComponent
+    FormGroupComponent,
+    CmailFormFieldDirective
   ],
   imports: [
     BrowserModule,
