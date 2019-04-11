@@ -11,6 +11,10 @@ export class CmailFormFieldDirective {
   constructor(private element: ElementRef) { }
 
   ngOnInit() {
+    const formField:HTMLInputElement = this.element.nativeElement;
+
+    formField.placeholder = " ";
+    formField.classList.add("mdl-textfield__input");
 
   }
 
