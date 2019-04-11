@@ -9,3 +9,8 @@ Angular Language Service - plugin for vscode
 virtual dom = 
     https://reactjs.org/docs/faq-internals.html
     https://www.google.com/search?q=virtual+dom&oq=virtual+dom&aqs=chrome..69i57j0l5.2383j0j7&sourceid=chrome&ie=UTF-8
+
+
+ng cli commands
+    ng g d cmailFormField *generate directive
+    ng g c componentName *generate component
