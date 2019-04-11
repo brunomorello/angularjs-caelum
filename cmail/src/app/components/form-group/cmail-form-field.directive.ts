@@ -8,7 +8,7 @@ export class CmailFormFieldDirective {
   // DI - Dependency Inject * Bring Classes or Types that Angular knows how to create
   //element.nativeElement instantiate the DOM Attributes to be handled
   //     console.log(element.nativeElement); 
-  constructor(element: ElementRef) { }
+  constructor(private element: ElementRef) { }
 
   ngOnInit() {
 
