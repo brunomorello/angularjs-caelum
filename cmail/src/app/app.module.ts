@@ -8,6 +8,7 @@ import { LoginComponent } from './models/login/login.component';
 import { RegisterComponent } from './models/register/register.component';
 import { InboxComponent } from './models/inbox/inbox.component';
 import { RoutingModule } from "./app.routes";
+import { FormGroupComponent } from './components/form-group/form-group.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RoutingModule } from "./app.routes";
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    InboxComponent
+    InboxComponent,
+    FormGroupComponent
   ],
   imports: [
     BrowserModule,
