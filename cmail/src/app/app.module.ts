@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from './models/login/login.component';
 import { RegisterComponent } from './models/register/register.component';
 import { InboxComponent } from './models/inbox/inbox.component';
@@ -24,6 +24,7 @@ import { CmailFormFieldDirective } from './components/form-group/cmail-form-fiel
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RoutingModule
   ],
   providers: [],
