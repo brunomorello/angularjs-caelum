@@ -14,3 +14,11 @@ virtual dom =
 ng cli commands
     ng g d cmailFormField *generate directive
     ng g c componentName *generate component
+
+deploying localhost angular projects
+    git clone project.git
+    npm install
+    ng serve --port[4300|5020]
+
+good-practies
+    one form per template
