@@ -22,16 +22,26 @@ export class RegisterComponent implements OnInit {
 
   handleRegisterUser() {
 
-    let formValues = this.registerForm.value;
+    if(this.registerForm.invalid) {
 
-    console.log(`formValid? ${formValues.status}`);
-    console.log(formValues); 
+      for(let prop in this.registerForm.value) {
+        this.registerForm.get(prop).markAsTouched();
+      }
 
-    console.log(`user_full_name ${formValues.user_full_name}`);
-    console.log(`user_username ${formValues.user_username}`);
-    console.log(`user_password ${formValues.user_password}`);
-    console.log(`user_avatar ${formValues.user_avatar}`);
-    console.log(this.registerForm);
+      return;
+    }
+
+    // 1st way to do
+    for(let prop in this.registerForm.value) {
+      console.log(`${prop}: ${this.registerForm.get(prop).value}`);
+    }
+
+    // 2nd way to do
+    Object.keys(this.registerForm.value).forEach((prop) => {
+      
+      console.log(`${prop} = ${this.registerForm.value[prop]} `);
+
+    });
     
   }
 
