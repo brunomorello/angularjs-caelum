@@ -3,25 +3,25 @@
   <main class="mdl-layout__content">
     <div class="page-content">
       <div class="mdl-grid">
-        <form [formGroup]="registerForm">
+        <form [formGroup]="registerForm" (ngSubmit)="handleRegisterUser()">
 
-          <cmail-form-group idField="user-full-name" labelField="Full Name">
-            <input required type="text" name="user-full-name" cmailFormField>
+          <cmail-form-group idField="user_full_name" labelField="Full Name">
+            <input formControlName="user_full_name" required type="text" name="user_full_name" cmailFormField>
             <span class="mdl-textfield__error">Inform your full Name!</span>
           </cmail-form-group>
 
-          <cmail-form-group idField="user-username" labelField="Username">
-            <input required type="text" name="user-username" cmailFormField>
+          <cmail-form-group idField="user_username" labelField="Username">
+            <input formControlName="user_username" required type="text" name="user_username" cmailFormField>
             <span class="mdl-textfield__error">Inform an userid</span>
           </cmail-form-group>
 
-          <cmail-form-group idField="user-password" labelField="Password">
-            <input required type="password" name="user-password" cmailFormField>
+          <cmail-form-group idField="user_password" labelField="Password">
+            <input formControlName="user_password" required type="password" name="user_password" cmailFormField>
             <span class="mdl-textfield__error">Insert a password!</span>
           </cmail-form-group>
 
-          <cmail-form-group idField="user-avatar" labelField="Avatar">
-            <input required type="text" name="user-avatar" cmailFormField>
+          <cmail-form-group idField="user_avatar" labelField="Avatar">
+            <input formControlName="user_avatar" required type="text" name="user_avatar" cmailFormField>
             <span class="mdl-textfield__error">Inform an avatar!</span>
           </cmail-form-group>
 
