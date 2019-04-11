@@ -12,11 +12,10 @@ export class CmailFormFieldDirective {
 
   ngOnInit() {
     const formField:HTMLInputElement = this.element.nativeElement;
-
-    formField.placeholder = " ";
-    formField.classList.add("mdl-textfield__input");
     
     if(formField.name) {
+      formField.placeholder = " ";
+      formField.classList.add("mdl-textfield__input");
       formField.id = formField.name;
     } else {
       throw new Error('Define a name attribute!');
