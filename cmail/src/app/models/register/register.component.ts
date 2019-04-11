@@ -23,11 +23,7 @@ export class RegisterComponent implements OnInit {
   handleRegisterUser() {
 
     if(this.registerForm.invalid) {
-
-      for(let prop in this.registerForm.value) {
-        this.registerForm.get(prop).markAsTouched();
-      }
-
+      this.validateFields(this.registerForm);
       return;
     }
 
@@ -37,12 +33,16 @@ export class RegisterComponent implements OnInit {
     }
 
     // 2nd way to do
-    Object.keys(this.registerForm.value).forEach((prop) => {
-      
+    Object.keys(this.registerForm.value).forEach((prop) => {      
       console.log(`${prop} = ${this.registerForm.value[prop]} `);
-
     });
-    
   }
 
+  validateFields(form: FormGroup) {
+
+    for(let prop in form.value) {
+      form.get(prop).markAsTouched();
+    }
+    
+  }
 }
