@@ -31,3 +31,11 @@ convert object to json, for small objects
 
 github caelum
     https://github.com/CaelumAulas
+
+MDN
+    fetch API - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+    promisse - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+    web APIs - https://developer.mozilla.org/en-US/docs/Web/API
+
+ReactiveX - Observable
+    http://reactivex.io/
