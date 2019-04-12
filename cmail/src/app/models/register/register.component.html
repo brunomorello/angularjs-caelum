@@ -23,6 +23,14 @@
             </span>
           </cmail-form-group>
 
+          <cmail-form-group [elementControl]="registerForm.get('user_phone_number')" idField="user_phone_number" labelField="Phone Number">
+            <input formControlName="user_phone_number" required type="tel" name="user_phone_number" cmailFormField minlength="8" maxlength="10">
+            <span *ngIf="registerForm.get('user_phone_number').getError('required')" class="mdl-textfield__error">Inform a phone number!</span>
+            <span *ngIf="registerForm.get('user_phone_number').getError('pattern')" class="mdl-textfield__error">
+              Phone number must has the pattern 9999-9999
+            </span>
+          </cmail-form-group>
+
           <cmail-form-group [elementControl]="registerForm.get('user_password')" idField="user_password" labelField="Password">
             <input formControlName="user_password" required type="password" name="user_password" cmailFormField>
             <span *ngIf="registerForm.get('user_password').getError('required')" class="mdl-textfield__error">Insert a password!</span>
