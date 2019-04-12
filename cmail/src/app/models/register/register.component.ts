@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { map, catchError } from 'rxjs/operators';
+import { HttpClient, HttpResponseBase } from '@angular/common/http';
 
 @Component({
   selector: 'cmail-register',
@@ -12,7 +14,7 @@ export class RegisterComponent implements OnInit {
     'user_full_name': new FormControl('', [Validators.required, Validators.minLength(2)]),
     'user_username': new FormControl('', [Validators.required, Validators.minLength(3)]),
     'user_password': new FormControl('', [Validators.required]),
-    'user_avatar': new FormControl('', [Validators.required ]),
+    'user_avatar': new FormControl('', [Validators.required], this.validateAvatar.bind(this)),
     'user_phone_number': new FormControl('', [
       Validators.required, 
       Validators.pattern('[0-9]{4}-[0-9]{4}[0-9]?'),
@@ -21,7 +23,7 @@ export class RegisterComponent implements OnInit {
     ])
   });
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
   }
@@ -51,4 +53,21 @@ export class RegisterComponent implements OnInit {
     }
 
   }
+
+  validateAvatar(field: FormControl) {
+
+    return this.httpClient
+      .head(field.value, {
+        observe: 'response'
+      })
+      .pipe(
+        map((response: HttpResponseBase) => {
+          return response.ok ? console.log(response) : { invalidURL: true}
+        }),
+        catchError((error) => {
+          return [{ invalidURL: true }]
+        })
+      )
+  }
+
 }
