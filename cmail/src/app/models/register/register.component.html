@@ -7,22 +7,30 @@
 
           <cmail-form-group [elementControl]="registerForm.get('user_full_name')" idField="user_full_name" labelField="Full Name">
             <input formControlName="user_full_name" required type="text" name="user_full_name" cmailFormField>
-            <span class="mdl-textfield__error">Inform your full Name!</span>
-          </cmail-form-group>
+            <span *ngIf="registerForm.get('user_full_name').getError('required')" class="mdl-textfield__error">Inform your full Name!</span>
+            <span *ngIf="registerForm.get('user_full_name').getError('minlength')" class="mdl-textfield__error">
+              Required Lenght is {{registerForm.get('user_full_name').getError('minlength').requiredLength}} and you typed 
+              {{registerForm.get('user_full_name').getError('minlength').actualLength}}!
+            </span>
+          </cmail-form-group>                  
 
           <cmail-form-group [elementControl]="registerForm.get('user_username')" idField="user_username" labelField="Username">
             <input formControlName="user_username" required type="text" name="user_username" cmailFormField>
-            <span class="mdl-textfield__error">Inform an userid</span>
+            <span *ngIf="registerForm.get('user_username').getError('required')" class="mdl-textfield__error">Inform an userid</span>
+            <span *ngIf="registerForm.get('user_username').getError('minlength')" class="mdl-textfield__error">
+              Required Lenght is {{registerForm.get('user_username').getError('minlength').requiredLength}} and you typed
+              {{registerForm.get('user_username').getError('minlength').actualLength}}!
+            </span>
           </cmail-form-group>
 
           <cmail-form-group [elementControl]="registerForm.get('user_password')" idField="user_password" labelField="Password">
             <input formControlName="user_password" required type="password" name="user_password" cmailFormField>
-            <span class="mdl-textfield__error">Insert a password!</span>
+            <span *ngIf="registerForm.get('user_password').getError('required')" class="mdl-textfield__error">Insert a password!</span>
           </cmail-form-group>
 
           <cmail-form-group [elementControl]="registerForm.get('user_avatar')" idField="user_avatar" labelField="Avatar">
             <input formControlName="user_avatar" required type="text" name="user_avatar" cmailFormField>
-            <span class="mdl-textfield__error">Inform an avatar!</span>
+            <span *ngIf="registerForm.get('user_avatar').getError('required')" class="mdl-textfield__error">Inform an avatar!</span>
           </cmail-form-group>
 
           <div class="mdl-card__actions">
