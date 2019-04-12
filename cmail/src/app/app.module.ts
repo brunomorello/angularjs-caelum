@@ -10,6 +10,7 @@ import { InboxComponent } from './models/inbox/inbox.component';
 import { RoutingModule } from "./app.routes";
 import { FormGroupComponent } from './components/form-group/form-group.component';
 import { CmailFormFieldDirective } from './components/form-group/cmail-form-field.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CmailFormFieldDirective } from './components/form-group/cmail-form-fiel
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RoutingModule
+    RoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
