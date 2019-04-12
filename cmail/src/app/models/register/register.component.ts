@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'cmail-register',
@@ -9,10 +9,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
-    'user_full_name': new FormControl(),
-    'user_username': new FormControl(),
-    'user_password': new FormControl(),
-    'user_avatar': new FormControl()
+    'user_full_name': new FormControl('', [Validators.required, Validators.minLength(2)]),
+    'user_username': new FormControl('', [Validators.required, Validators.minLength(3)]),
+    'user_password': new FormControl('', [Validators.required]),
+    'user_avatar': new FormControl('', [Validators.required ])
   });
 
   constructor() { }
@@ -43,6 +43,6 @@ export class RegisterComponent implements OnInit {
     for(let prop in form.value) {
       form.get(prop).markAsTouched();
     }
-    
+
   }
 }
