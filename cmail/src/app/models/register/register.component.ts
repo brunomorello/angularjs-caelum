@@ -12,7 +12,13 @@ export class RegisterComponent implements OnInit {
     'user_full_name': new FormControl('', [Validators.required, Validators.minLength(2)]),
     'user_username': new FormControl('', [Validators.required, Validators.minLength(3)]),
     'user_password': new FormControl('', [Validators.required]),
-    'user_avatar': new FormControl('', [Validators.required ])
+    'user_avatar': new FormControl('', [Validators.required ]),
+    'user_phone_number': new FormControl('', [
+      Validators.required, 
+      Validators.pattern('[0-9]{4}-[0-9]{4}[0-9]?'),
+      Validators.minLength(8),
+      Validators.maxLength(10)
+    ])
   });
 
   constructor() { }
