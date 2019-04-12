@@ -22,3 +22,9 @@ deploying localhost angular projects
 
 good-practies
     one form per template
+
+convert object to json, for small objects
+    {{ registerForm.get('user_full_name').getError('minlength') | json }}
+
+github caelum
+    https://github.com/CaelumAulas
