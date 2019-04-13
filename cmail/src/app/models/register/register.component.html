@@ -3,6 +3,7 @@
   <main class="mdl-layout__content">
     <div class="page-content">
       <div class="mdl-grid">
+
         <form [formGroup]="registerForm" (ngSubmit)="handleRegisterUser()">
 
           <cmail-form-group [elementControl]="registerForm.get('user_full_name')" idField="user_full_name" labelField="Full Name">
@@ -39,6 +40,7 @@
           <cmail-form-group [elementControl]="registerForm.get('user_avatar')" idField="user_avatar" labelField="Avatar">
             <input formControlName="user_avatar" required type="text" name="user_avatar" cmailFormField>
             <span *ngIf="registerForm.get('user_avatar').getError('required')" class="mdl-textfield__error">Inform an avatar!</span>
+            <span *ngIf="registerForm.get('user_avatar').getError('invalidURL')" class="mdl-textfield__error">Error: Invalid URL</span>
           </cmail-form-group>
 
           <div class="mdl-card__actions">
@@ -47,7 +49,14 @@
             </button>
           </div>
 
+          <ul *ngIf="errorMessage" class="mdl-textfield is-invalid">
+              <li *ngFor="let error of errorMessage" class="mdl-textfield__error">
+                {{error.message}}: {{error.value}}
+              </li>
+          </ul>          
+
         </form>
+
       </div>
     </div>
   </main>

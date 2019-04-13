@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { map, catchError } from 'rxjs/operators';
-import { HttpClient, HttpResponseBase } from '@angular/common/http';
+import { HttpClient, HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders } from "@angular/common/http";
+import { User } from "./../dto/output/user";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cmail-register',
@@ -23,7 +26,9 @@ export class RegisterComponent implements OnInit {
     ])
   });
 
-  constructor(private httpClient: HttpClient) { }
+  errorMessage = '';
+
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
@@ -44,6 +49,31 @@ export class RegisterComponent implements OnInit {
     Object.keys(this.registerForm.value).forEach((prop) => {      
       console.log(`${prop} = ${this.registerForm.value[prop]} `);
     });
+
+    console.log(this.registerForm);
+
+    const data = new User(this.registerForm.value);
+
+    console.log(`data ${JSON.stringify(data)}`);
+
+    this.httpClient
+      .post('http://localhost:3200/users', data)
+      .subscribe(
+        (response) => {
+          console.log(`Register executed with success!`);
+          console.log(response); 
+
+          this.registerForm.reset();
+          
+          setTimeout(() => {
+            this.router.navigate(['login', response['id']]);
+          },1200);
+        },
+        (httpError: HttpErrorResponse) => {
+          console.log(httpError);
+          this.errorMessage = httpError.error.body;
+        }
+      )
   }
 
   validateFields(form: FormGroup) {
