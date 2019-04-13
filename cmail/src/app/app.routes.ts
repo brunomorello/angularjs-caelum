@@ -1,15 +1,25 @@
 import { Routes, RouterModule } from "@angular/router";
-import { InboxComponent } from "./modules/inbox/inbox.component";
-import { LoginComponent } from "./modules/login/login.component";
-import { RegisterComponent } from "./modules/register/register.component";
+import { NgModule } from '@angular/core';
 
 const appRoutes:Routes = [
-    {path: '', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'inbox', component: InboxComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'login/:id', component: LoginComponent}
-    //{path: '**', redirectTo: ''}
+    {path: '', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
+    {path: 'register', loadChildren: 'src/app/modules/register/register.module#RegisterModule'},
+    {path: 'inbox', loadChildren: 'src/app/modules/inbox/inbox.module#InboxModule'},
+    {path: 'login', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
+    {path: 'login/:id', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
+    {path: '**', redirectTo: ''}
 ];
 
-export const RoutingModule = RouterModule.forRoot(appRoutes);
+//export const RoutingModule = RouterModule.forRoot(appRoutes);
+
+@NgModule({
+    imports: [
+        RouterModule.forRoot(appRoutes)
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class CustomRouterModule {
+
+}
