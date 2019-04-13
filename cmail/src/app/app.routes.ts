@@ -7,7 +7,9 @@ const appRoutes:Routes = [
     {path: '', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'inbox', component: InboxComponent},
-    {path: '**', redirectTo: ''}
+    {path: 'login', component: LoginComponent},
+    {path: 'login/:id', component: LoginComponent}
+    //{path: '**', redirectTo: ''}
 ];
 
 export const RoutingModule = RouterModule.forRoot(appRoutes);
