@@ -13,6 +13,7 @@ Angular Language Service - plugin for vscode
 virtual dom = 
     https://reactjs.org/docs/faq-internals.html
     https://www.google.com/search?q=virtual+dom&oq=virtual+dom&aqs=chrome..69i57j0l5.2383j0j7&sourceid=chrome&ie=UTF-8
+    https://medium.com/@ahaseeb12251998/virtual-dom-vs-real-dom-angular-vs-react-framework-vs-libraries-spas-vs-mpa-s-946fceb70955
 
 ng cli commands
     ng g d cmailFormField *generate directive
@@ -39,3 +40,14 @@ MDN
 
 ReactiveX - Observable
     http://reactivex.io/
+
+Cross-Origin Resource Sharing (CORS) - HTTP | MDN
+    https://www.google.com/search?q=cors+policy&oq=cors+policy&aqs=chrome..69i57j0l5.2424j0j7&sourceid=chrome&ie=UTF-8
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+
+Services Listening on TCP Ports
+    https://www.cyberciti.biz/faq/find-out-which-service-listening-specific-port/
+
+Destructured Parameters
+    https://mariusschulz.com/blog/typing-destructured-object-parameters-in-typescript
+    http://exploringjs.com/es6/ch_destructuring.html
