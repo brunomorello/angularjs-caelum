@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cmail-login',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  userId = '';
+
+  constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.activeRoute.snapshot.paramMap);
+
+    this.userId = this.activeRoute.snapshot.paramMap.get('id');
+    
   }
 
 }
