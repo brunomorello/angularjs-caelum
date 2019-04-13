@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from "@angular/router";
-import { InboxComponent } from "./models/inbox/inbox.component";
-import { LoginComponent } from "./models/login/login.component";
-import { RegisterComponent } from "./models/register/register.component";
+import { InboxComponent } from "./modules/inbox/inbox.component";
+import { LoginComponent } from "./modules/login/login.component";
+import { RegisterComponent } from "./modules/register/register.component";
 
 const appRoutes:Routes = [
     {path: '', component: LoginComponent},
