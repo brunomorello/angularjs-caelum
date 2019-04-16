@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
-import { HttpHeaders } from "@angular/common/http";
 import { User } from "./../../models/dto/output/user";
 import { Router } from '@angular/router';
 
