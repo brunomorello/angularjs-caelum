@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { LoginService } from "src/app/services/login.service";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cmail-login',
   templateUrl: './login.component.html',
-  styles: []
+  styleUrls: [
+    './login.component.css'
+  ]
 })
 export class LoginComponent implements OnInit {
 
@@ -14,14 +17,10 @@ export class LoginComponent implements OnInit {
   password = '';
   errorMessage = '';
 
-  constructor(private activeRoute: ActivatedRoute, private httpClient: HttpClient,
+  constructor(private loginService: LoginService,
     private route: Router) { }
 
   ngOnInit() {
-    console.log(this.activeRoute.snapshot.paramMap);
-
-    this.userId = this.activeRoute.snapshot.paramMap.get('id');
-    
   }
 
   handleLogin(loginForm: NgForm) {
@@ -39,16 +38,12 @@ export class LoginComponent implements OnInit {
       email: loginForm.value.userId,
       password: "123"
     }
-
-    this.httpClient
-      .post('http://localhost:3200/login', data)
-      .subscribe(
-        (response: any) => {
-          
+    
+      this.loginService.authenticate(data)
+        .subscribe(
+        (response: any) => {          
           console.log(response);
-          localStorage.setItem("cmail-token", response.token)
-          this.route.navigate(['/inbox']);
-          
+          this.route.navigate(['/inbox']);          
         },
         (httpError: HttpErrorResponse) => {
           console.log(httpError);
