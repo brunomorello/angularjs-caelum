@@ -3,14 +3,27 @@
   <main class="mdl-layout__content">
     <div class="page-content">
       <div class="mdl-grid">
+        
         <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)" class="cmailForm">
-      
-          <cmail-form-group [elementControl]="userId" idField="userId" labelField="Username">
-            <input #userIdForm="ngModel" [(ngModel)]="userId" type="text" name="userId" cmailFormField required>
+
+          <section *ngIf="errorMessage" class="mdl-textfield is-invalid">
+            <p class="mdl-textfield__error">
+              {{errorMessage}}
+            </p>
+          </section>
+          
+          <cmail-form-group [elementControl]="userIdForm" idField="userId" labelField="Username" >
+            <input #userIdForm="ngModel" [(ngModel)]="userId" type="text" name="userId" cmailFormField required autofocus>
+            <span class="mdl-textfield__error" *ngIf="userIdForm.invalid">
+              Provived a valid email!
+            </span>
           </cmail-form-group>
       
-          <cmail-form-group [elementControl]="password" idField="password" labelField="Password">
+          <cmail-form-group [elementControl]="passwordForm" idField="password" labelField="Password">
             <input #passwordForm="ngModel" [(ngModel)]="password" type="password" name="password" cmailFormField required>
+            <span class="mdl-textfield__error" *ngIf="passwordForm.invalid">
+              Type a password
+            </span>
           </cmail-form-group>
           
           <div class="mdl-card__actions">

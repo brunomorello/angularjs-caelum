@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -12,8 +12,10 @@ export class LoginComponent implements OnInit {
 
   userId = '';
   password = '';
+  errorMessage = '';
 
-  constructor(private activeRoute: ActivatedRoute, private httpClient: HttpClient) { }
+  constructor(private activeRoute: ActivatedRoute, private httpClient: HttpClient,
+    private route: Router) { }
 
   ngOnInit() {
     console.log(this.activeRoute.snapshot.paramMap);
@@ -45,11 +47,12 @@ export class LoginComponent implements OnInit {
           
           console.log(response);
           localStorage.setItem("cmail-token", response.token)
-          this.loginRoutes.navigate(['/inbox']);
+          this.route.navigate(['/inbox']);
           
         },
         (httpError: HttpErrorResponse) => {
           console.log(httpError);
+          this.errorMessage = httpError.error.message;
         }
       )
 
