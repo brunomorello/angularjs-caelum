@@ -1,11 +1,14 @@
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-  <cmail-header></cmail-header>
+<div class="mdl-layout mdl-js-layout">
   <main class="mdl-layout__content">
-    <div class="page-content">
-      <div class="mdl-grid">
-        
-        <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)" class="cmailForm">
-
+  <div class="page-content">
+    <div class="mdl-grid">
+      <article class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <header class="mdl-card__title">
+          <h1 class="mdl-card__title-text">Welcome to CMail!</h1>
+        </header>
+  
+        <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)" class="cmailForm" autocomplete="off" class="mdl-card__supporting-text">
+  
           <section *ngIf="errorMessage" class="mdl-textfield is-invalid">
             <p class="mdl-textfield__error">
               {{errorMessage}}
@@ -25,15 +28,19 @@
               Type a password
             </span>
           </cmail-form-group>
-          
-          <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+  
+          <div class="mdl-card__actions mdl-card--border">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent entrar">
                 Login
-              </button>
+            </button>
+            <a routerLink="register" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              First Access? Sign Up Here
+            </a>    
           </div>
-      
         </form>
-      </div>
+
+      </article>
     </div>
+  </div>
   </main>
-</div>
+  </div>
