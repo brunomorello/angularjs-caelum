@@ -8,9 +8,10 @@
 
         <ul>
           <li *ngFor="let email of emailList">
-            {{email.to}}
-            {{email.subject}}
-            {{email.content}}
+            <span>To: </span>{{email.to}}
+            <span>Subject: </span>{{email.subject}}
+            <span>Content: </span>{{email.content}}
+            <span>Created at: </span>{{email.creation_date}}
           </li>
         </ul>
 
