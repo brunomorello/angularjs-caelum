@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
           this.registerForm.reset();
           
           setTimeout(() => {
-            this.router.navigate(['inbox', response['userId']]);
+            this.router.navigate(['login', response['userId']]);
           },1200);
         },
         (httpError: HttpErrorResponse) => {
