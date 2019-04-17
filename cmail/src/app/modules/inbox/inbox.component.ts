@@ -6,7 +6,13 @@ import { EmailService } from 'src/app/services/email.service';
 @Component({
   selector: 'cmail-inbox',
   templateUrl: './inbox.component.html',
-  styles: []
+  styles: [`
+    ul {
+      margin: 0;
+      padding: 0;
+      flex-grow: 1;
+    }
+  `]
 })
 export class InboxComponent implements OnInit {
 
@@ -44,7 +50,7 @@ export class InboxComponent implements OnInit {
           console.log(response);
           console.log(response.responseAPI.created_at);
 
-          this.email.creation_date = response.responseAPI.created_at;
+          this.email.creationDate = new Date(response.responseAPI.created_at);
 
           this.emailList.push(this.email);
           this.email = new Email();

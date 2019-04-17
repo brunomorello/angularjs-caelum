@@ -5,17 +5,16 @@
     <div class="page-content">
 
       <div class="mdl-grid">
-
         <ul>
           <li *ngFor="let email of emailList">
-            <span>To: </span>{{email.to}}
-            <span>Subject: </span>{{email.subject}}
-            <span>Content: </span>{{email.content}}
-            <span>Created at: </span>{{email.creation_date}}
+            <cmail-list-item
+              [emailFrom]="email.to"
+              [emailSubject]="email.subject"
+              [emailContent]="email.content"
+              [emailCreationDate]="email.creationDate"
+            ></cmail-list-item>
           </li>
         </ul>
-
-        <cmail-list-item></cmail-list-item>
 
         <!-- Floating Multiline Textfield -->
         <button class="globalFab tooltip btn mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
