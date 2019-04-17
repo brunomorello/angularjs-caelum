@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginService } from "src/app/services/login.service";
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cmail-login',
@@ -18,9 +18,12 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
 
   constructor(private loginService: LoginService,
-    private route: Router) { }
+    private route: Router,
+    private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.activeRoute);
+    this.userId = this.activeRoute.snapshot.paramMap.get('userName');
   }
 
   handleLogin(loginForm: NgForm) {
