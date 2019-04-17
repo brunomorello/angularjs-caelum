@@ -5,6 +5,7 @@ import { SharedComponentsModule } from 'src/app/components/shared-components.mod
 import { RegisterRoutingModule } from './register-routing.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule
   ],
-  exports: []
+  exports: [],
+  providers: [
+    UserService
+  ]
 })
 export class RegisterModule { }

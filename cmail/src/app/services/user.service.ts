@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import { User } from '../models/dto/output/user';
 
 @Injectable()
-export class RegisterService {
+export class UserService {
 
     private readonly endpoint = 'http://localhost:3200/users';
 

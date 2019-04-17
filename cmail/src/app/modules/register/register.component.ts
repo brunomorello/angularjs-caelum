@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
-import { User } from "./../../models/dto/output/user";
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'cmail-register',
@@ -27,7 +27,8 @@ export class RegisterComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router,
+            private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -51,12 +52,7 @@ export class RegisterComponent implements OnInit {
 
     console.log(this.registerForm);
 
-    const data = new User(this.registerForm.value);
-
-    console.log(`data ${JSON.stringify(data)}`);
-
-    this.httpClient
-      .post('http://localhost:3200/users', data)
+    this.userService.registerUser(this.registerForm.value)
       .subscribe(
         (response) => {
           console.log(`Register executed with success!`);
@@ -65,7 +61,7 @@ export class RegisterComponent implements OnInit {
           this.registerForm.reset();
           
           setTimeout(() => {
-            this.router.navigate(['login', response['id']]);
+            this.router.navigate(['inbox', response['userId']]);
           },1200);
         },
         (httpError: HttpErrorResponse) => {
