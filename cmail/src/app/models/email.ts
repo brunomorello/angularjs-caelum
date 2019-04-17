@@ -3,4 +3,8 @@ export class Email {
     subject = '';
     content = '';
     creationDate = '';
+
+    get contentIntroduction() {
+        return this.content.substr(0, 40) + '...';
+    }
 }
