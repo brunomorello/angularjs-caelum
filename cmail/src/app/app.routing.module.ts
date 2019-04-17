@@ -5,8 +5,8 @@ const appRoutes:Routes = [
     {path: '', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
     {path: 'register', loadChildren: 'src/app/modules/register/register.module#RegisterModule'},
     {path: 'inbox', loadChildren: 'src/app/modules/inbox/inbox.module#InboxModule'},
-    {path: 'inbox/:id', loadChildren: 'src/app/modules/inbox/inbox.module#InboxModule'},
     {path: 'login', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
+    {path: 'login/:userName', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
     {path: '**', redirectTo: ''}
 ];
 
