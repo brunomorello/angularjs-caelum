@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'cmail-list-item',
@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ListItemComponent implements OnInit {
+
+  @Input() emailTo = '';
+  @Input() emailSubject = '';
+  @Input() emailContent = '';
+  @Input() emailCreationDate = '';
 
   constructor() { }
 
