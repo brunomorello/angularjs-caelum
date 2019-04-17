@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
-  @Input() emailTo = '';
+  @Input() emailFrom = '';
   @Input() emailSubject = '';
   @Input() emailContent = '';
   @Input() emailCreationDate = '';
