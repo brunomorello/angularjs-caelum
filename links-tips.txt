@@ -51,3 +51,7 @@ Services Listening on TCP Ports
 Destructured Parameters
     https://mariusschulz.com/blog/typing-destructured-object-parameters-in-typescript
     http://exploringjs.com/es6/ch_destructuring.html
+
+Literal objects/values
+    https://www.dyn-web.com/tutorials/object-literal/
+    https://en.wikipedia.org/wiki/Literal_(computer_programming)
