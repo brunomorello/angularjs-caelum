@@ -18,16 +18,31 @@ export class InboxComponent implements OnInit {
 
   private _isNewEmailFormOpen = false;
   
-  email = new Email();
+  email = new Email({to: '', subject: '', content: '', creationDate: new Date()});
   //two types to declare an array of a specific object
   // TypeScript
   emailList: Email[] = [];
   // Java Style
   // emailList: Array<Email> = [];
+  
+  private _errorToRetrieveEmailListAPI = false;
 
   constructor(private emailService: EmailService) { }
 
   ngOnInit() {
+    this.emailService.list()
+      .subscribe(
+        emailListAPI => {
+          this.emailList = emailListAPI;
+        },
+        error => {
+          this._errorToRetrieveEmailListAPI = true;
+        }
+      )
+  }
+
+  get errorToRetrieveEmails() {
+    return this._errorToRetrieveEmailListAPI;
   }
 
   get isNewEmailFormOpen() {
@@ -45,23 +60,17 @@ export class InboxComponent implements OnInit {
     // send email using API
     this.emailService.send(this.email)
       .subscribe(
-        (response) => {
+        email => {
 
-          console.log(response);
-          console.log(response.responseAPI.created_at);
-
-          this.email.creationDate = new Date(response.responseAPI.created_at);
+          console.log(email);
 
           this.emailList.push(this.email);
-          this.email = new Email();
+          this.email = new Email(email);
           newMailForm.resetForm();
           this.toggleNewEmailFormOpen();
           
         }
       );
-
-
-
   }
 
 }
