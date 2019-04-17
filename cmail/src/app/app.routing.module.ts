@@ -1,13 +1,33 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes:Routes = [
-    {path: '', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
-    {path: 'register', loadChildren: 'src/app/modules/register/register.module#RegisterModule'},
-    {path: 'inbox', loadChildren: 'src/app/modules/inbox/inbox.module#InboxModule'},
-    {path: 'login', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
-    {path: 'login/:userName', loadChildren: 'src/app/modules/login/login.module#LoginModule'},
-    {path: '**', redirectTo: ''}
+    {
+        path: '', 
+        loadChildren: 'src/app/modules/login/login.module#LoginModule'
+    },
+    {
+        path: 'register', 
+        loadChildren: 'src/app/modules/register/register.module#RegisterModule'        
+    },
+    {
+        path: 'inbox', 
+        loadChildren: 'src/app/modules/inbox/inbox.module#InboxModule',
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'login', 
+        loadChildren: 'src/app/modules/login/login.module#LoginModule'
+    },
+    {
+        path: 'login/:userName', 
+        loadChildren: 'src/app/modules/login/login.module#LoginModule'
+    },
+    {
+        path: '**', 
+        redirectTo: ''
+    }
 ];
 
 //export const RoutingModule = RouterModule.forRoot(appRoutes);
@@ -18,6 +38,9 @@ const appRoutes:Routes = [
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        AuthGuard
     ]
 })
 export class CustomRouterModule {
