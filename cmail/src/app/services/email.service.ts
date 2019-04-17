@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmailDTO } from '../models/dto/output/email.dto';
 import { map } from 'rxjs/operators';
+import { Email } from '../models/email';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class EmailService {
@@ -14,20 +16,42 @@ export class EmailService {
 
     }
 
-    send(emailData) {
+    send(emailData): Observable<Email> {
 
         const email = new EmailDTO(emailData);
 
         return this.httpClient.post(this.endpont, email, {headers: this.requestHeader} )
             .pipe(
-                map((response: any) => {
+                map((emailApiResponse: any) => {
 
-                    return {
-                        responseAPI: response
-                    }
+                    return new Email({
+                        to: emailApiResponse.to,
+                        subject: emailApiResponse.subject,
+                        content: emailApiResponse.content,
+                        creationDate: emailApiResponse.created_at
+                    })
                 })
             )
 
+    }
+
+    list() {        
+
+        return this.httpClient.get(this.endpont, {headers: this.requestHeader})
+            .pipe<Email[]>(
+                map(
+                    (response: any[]) => {
+                        return response.map(
+                            emailApiResponse => new Email ({
+                                to: emailApiResponse.to,
+                                subject: emailApiResponse.subject,
+                                content: emailApiResponse.content,
+                                creationDate: emailApiResponse.created_at
+                            })
+                        )
+                    }
+                )
+            )
     }
 
 }
