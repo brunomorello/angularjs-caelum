@@ -24,7 +24,7 @@ export class UserService {
             .pipe(
                 map((response: any) => {
                     return {
-                        userId: response['id']
+                        emailCreated: response['email']
                     }
                 })
             )
