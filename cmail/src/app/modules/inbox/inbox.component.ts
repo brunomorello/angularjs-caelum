@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Email } from '../../models/email';
 import { NgForm, NgModel } from '@angular/forms';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'cmail-inbox',
@@ -18,7 +19,7 @@ export class InboxComponent implements OnInit {
   // Java Style
   // emailList: Array<Email> = [];
 
-  constructor() { }
+  constructor(private emailService: EmailService) { }
 
   ngOnInit() {
   }
@@ -35,10 +36,26 @@ export class InboxComponent implements OnInit {
     
     if(newMailForm.invalid) return;
 
-    this.emailList.push(this.email);
-    this.email = new Email();
-    newMailForm.resetForm();
-    this.toggleNewEmailFormOpen();
+    // send email using API
+    this.emailService.send(this.email)
+      .subscribe(
+        (response) => {
+
+          console.log(response);
+          console.log(response.responseAPI.created_at);
+
+          this.email.creation_date = response.responseAPI.created_at;
+
+          this.emailList.push(this.email);
+          this.email = new Email();
+          newMailForm.resetForm();
+          this.toggleNewEmailFormOpen();
+          
+        }
+      );
+
+
+
   }
 
 }
