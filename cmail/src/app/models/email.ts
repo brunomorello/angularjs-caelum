@@ -6,7 +6,8 @@ export class Email {
     
     constructor(
         {to, subject, content, creationDate}:
-        {to: string, subject: string, content: string, creationDate: Date}) {
+        {to: string, subject: string, content: string, creationDate: Date}
+    ) {
         this.to = to;
         this.subject = subject;
         this.content = content;
