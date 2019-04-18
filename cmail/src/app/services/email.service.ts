@@ -28,7 +28,8 @@ export class EmailService {
                         to: emailApiResponse.to,
                         subject: emailApiResponse.subject,
                         content: emailApiResponse.content,
-                        creationDate: emailApiResponse.created_at
+                        creationDate: emailApiResponse.created_at,
+                        id: emailApiResponse.id
                     })
                 })
             )
@@ -45,12 +46,17 @@ export class EmailService {
                                 to: emailApiResponse.to,
                                 subject: emailApiResponse.subject,
                                 content: emailApiResponse.content,
-                                creationDate: emailApiResponse.created_at
+                                creationDate: emailApiResponse.created_at,
+                                id: emailApiResponse.id
                             })
                         )
                     }
                 )
             )
+    }
+
+    delete(id) {
+        return this.httpClient.delete(`${this.endpont}/${id}`, { headers: this.requestHeader} );
     }
 
 }
