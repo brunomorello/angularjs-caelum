@@ -10,6 +10,11 @@
           <span class="material-icons">error</span>
           <span>Error to retrieve emails</span>
         </p>
+
+        <p *ngIf="errorToDeleteEmail">
+          <span class="material-icons">error</span>
+          <span>Error to delete email</span>
+        </p>
         
         <ul>
           <li *ngFor="let email of emailList">
@@ -18,6 +23,7 @@
               [emailSubject]="email.subject"
               [emailContent]="email.content"
               [emailCreationDate]="email.creationDate"
+              (eventEmailRemove)="handleRemoveEmail($event, email.id)"
             ></cmail-list-item>
           </li>
         </ul>
