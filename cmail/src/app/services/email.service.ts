@@ -20,7 +20,7 @@ export class EmailService {
 
         const email = new EmailDTO(emailData);
 
-        return this.httpClient.post(this.endpont, email, {headers: this.requestHeader} )
+        return this.httpClient.post(this.endpont, email, {headers: this.requestHeader})
             .pipe(
                 map((emailApiResponse: any) => {
 
@@ -39,9 +39,8 @@ export class EmailService {
 
         return this.httpClient.get(this.endpont, {headers: this.requestHeader})
             .pipe<Email[]>(
-                map(
-                    (response: any[]) => {
-                        return response.map(
+                map((emailListAPI: any[]) => {
+                        return emailListAPI.map(
                             emailApiResponse => new Email ({
                                 to: emailApiResponse.to,
                                 subject: emailApiResponse.subject,
