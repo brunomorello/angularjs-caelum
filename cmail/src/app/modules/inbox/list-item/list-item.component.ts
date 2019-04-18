@@ -12,6 +12,7 @@ export class ListItemComponent implements OnInit {
   @Input() emailFrom = '';
   @Input() emailSubject = '';
   @Input() emailContent = '';
+  @Input() emailCreationDate: Date;
 
   constructor() { }
 
