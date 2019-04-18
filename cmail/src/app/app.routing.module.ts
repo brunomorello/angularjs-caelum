@@ -25,6 +25,10 @@ const appRoutes:Routes = [
         loadChildren: 'src/app/modules/login/login.module#LoginModule'
     },
     {
+        path: 'logout', 
+        loadChildren: 'src/app/modules/logout/logout.module#LogoutModule'
+    },
+    {
         path: '**', 
         redirectTo: ''
     }
