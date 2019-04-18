@@ -13,8 +13,5 @@ export class Email {
         this.content = content;
         this.creationDate = creationDate;
     }
-
-    get contentIntroduction() {
-        return this.content.substr(0, 40) + '...';
-    }
+    
 }

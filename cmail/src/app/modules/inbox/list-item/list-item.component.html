@@ -5,7 +5,7 @@
         <i class="material-icons mdl-list__item-avatar">person</i>
         <span>{{emailFrom}}</span>
         <span class="emailList__itemText mdl-list__item-text-body">
-          {{emailSubject}}:{{emailContent}}
+          {{emailSubject}}:{{emailContent | slice:0:40 }}
         </span>
       </a>
     </span>
@@ -18,7 +18,7 @@
     </span>
   
     <span class="emailList__itemMenu">
-      <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+      <button (click)="removeEmail($event)" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
         <i class="material-icons">delete</i>
       </button>
     </span>
