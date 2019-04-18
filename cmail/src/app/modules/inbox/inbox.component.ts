@@ -18,7 +18,7 @@ export class InboxComponent implements OnInit {
 
   private _isNewEmailFormOpen = false;
   
-  email = new Email({to: '', subject: '', content: '', creationDate: new Date()});
+  email = new Email({to: '', subject: '', content: '', creationDate: new Date(), id: ''});
   //two types to declare an array of a specific object
   // TypeScript
   emailList: Email[] = [];
@@ -27,18 +27,22 @@ export class InboxComponent implements OnInit {
   
   private _errorToRetrieveEmailListAPI = false;
 
+  private _errorToDeleteEmailOnAPI = false;
+
   constructor(private emailService: EmailService) { }
 
   ngOnInit() {
     this.emailService.list()
       .subscribe(
-        emailListAPI => {
-          this.emailList = emailListAPI;
-        },
+        emailListAPI => this.emailList = emailListAPI,
         error => {
           this._errorToRetrieveEmailListAPI = true;
         }
       )
+  }
+
+  get errorToDeleteEmail() {
+    return this._errorToDeleteEmailOnAPI;
   }
 
   get errorToRetrieveEmails() {
@@ -71,6 +75,26 @@ export class InboxComponent implements OnInit {
           
         }
       );
+  }
+
+  handleRemoveEmail(eventRemoveEmail, emailId) {
+    if(eventRemoveEmail.status === 'removing') {
+      console.log('removing email');
+      this.emailService.delete(emailId)
+        .subscribe(
+          response => {
+            console.log(response);
+
+            // remove the email object of emailList array after a success delete from API
+            this.emailList = this.emailList.filter( email => email.id != emailId );
+            
+          },
+          error => {
+            console.error(`error to delete {$error}`);
+            this._errorToDeleteEmailOnAPI = true;
+          }
+        )
+    }
   }
 
 }
