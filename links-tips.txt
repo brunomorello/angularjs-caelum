@@ -55,3 +55,6 @@ Destructured Parameters
 Literal objects/values
     https://www.dyn-web.com/tutorials/object-literal/
     https://en.wikipedia.org/wiki/Literal_(computer_programming)
+
+Caelum projects
+    https://github.com/caelum/projeto-js45
